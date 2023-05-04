@@ -25,7 +25,16 @@ export class App extends Component {
     const inputSearchForm = e.target.elements.searchImag.value;
 
     if (inputSearchForm.trim() === '') {
-      toast.warn('Please put something');
+      toast.warn('Please put something', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
       return;
     }
     this.setState({
@@ -34,7 +43,16 @@ export class App extends Component {
     try {
       const dataImages = await fetchImages(inputSearchForm);
       if (dataImages.hits.length === 0) {
-        toast.error(`We have not ${inputSearchForm} images`);
+        toast.error(`We have not ${inputSearchForm} images`, {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+        });
       }
       this.setState({
         images: dataImages.hits,
